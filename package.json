@@ -2,5 +2,6 @@
   "name": "node.vert.x",
   "version": "0.1.0",
   "author": "Nelson Silva <nelson.silva@inevo.pt>",
-  "private": true
+  "private": true,
+  "main": "index.js"
 }
