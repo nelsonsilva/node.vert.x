@@ -1,0 +1,23 @@
+<project name="node.vert.x" default="compile" basedir=".">
+
+  <description>
+    Build script for node.vert.x
+  </description>
+
+  <property file="build.properties" />
+
+  <path id="compile.classpath">
+    <fileset dir="${vertx.dir}/lib/jars">
+      <include name="*.jar"/>
+    </fileset>
+  </path>
+
+  <target name="compile">
+    <javac srcdir="src" destdir="." debug="on"
+           includeantruntime="false" target="1.7" source="1.7">
+      <classpath refid="compile.classpath"/>
+    </javac>
+  </target>
+
+
+</project>

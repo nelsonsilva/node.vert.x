@@ -1,0 +1,4 @@
+{
+  "main": "org.vertx.node.NodeVerticle",
+  "preserve-cwd": true
+}
