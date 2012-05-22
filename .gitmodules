@@ -1,6 +1,6 @@
-[submodule "modules/sockjs"]
-	path = modules/sockjs
-	url = git://github.com/nelsonsilva/sockjs-node.vert.x.git
 [submodule "modules/connect"]
 	path = modules/connect
 	url = git://github.com/nelsonsilva/connect.vert.x.git
+[submodule "modules/sockjs"]
+	path = modules/sockjs
+	url = git://github.com/nelsonsilva/sockjs-node.vert.x.git
