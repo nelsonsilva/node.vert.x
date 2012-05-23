@@ -1,3 +1,5 @@
+module.deprecate = function(name, msg){console.warn(name + ' ' + msg)};
+
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
