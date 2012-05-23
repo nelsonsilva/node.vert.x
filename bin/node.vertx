@@ -1,2 +1,11 @@
 #!/bin/sh
+if [ $# -eq 0 ]
+then
+	echo "Usage: node.vert.x <main.js> <args*>"
+	exit 65
+fi
+main=$1
+shift 1
+args=$*
+echo "{\"main\":\"$main\",\"args\":\"$args\"}" > vertx.json
 vertx run node.vert.x -conf vertx.json

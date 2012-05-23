@@ -6,25 +6,28 @@ This is a simple node.js compatibility layer for [vert.x](http://vertx.io)
 
 Clone the repo into your vertx/mods directory
 
+Initialize the submodules:
+`git submodule update --init`
+
 Copy build.properties.sample to build.properties
 
 `ant`
 
 ## Running
 
+Add node.vert.x/bin to your PATH
+
 Go to your project directory (ex: ShareJS)
 
-Create a configuration file, ex (vertx.json) :
+Run the node.vert.x mod:
 
-`
-{
-  "main": "bin/exampleserver"
-}
-`
+`node.vert.x <arguments>`
 
-Run the node.vert.x mod and pass it the conf file:
+Ex:
 
-`vertx run node.vert.x -conf vertx.json`
+Running ShareJS
+
+`node.vert.x bin/exampleserver.js -p 8080`
 
 ## Notes
 

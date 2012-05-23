@@ -36,6 +36,9 @@ public class NodeVerticle extends Verticle {
 
   private static ThreadLocal<ScriptableObject> scopeThreadLocal = new ThreadLocal<>();
   private static ThreadLocal<ClassLoader> clThreadLocal = new ThreadLocal<>();
+  
+  private String scriptName;
+  private String[] argv = null;
 
   public NodeVerticle() {}
 
@@ -76,6 +79,21 @@ public class NodeVerticle extends Verticle {
   }
 
   private void addNodeObjectsToScope(ClassLoader cl, Context cx, ScriptableObject scope) throws Exception {
+    ScriptableObject.putProperty(scope, "global", scope);
+    if(argv != null) {
+      String [] args = new String[argv.length + 2];
+      int idx = 0;
+      args[idx++] = "node.vert.x";
+      args[idx++] = scriptName;
+      for (String arg : argv) {
+        args[idx++] = arg;
+      }
+      Object a = Context.javaToJS(args, scope);
+      ScriptableObject.putProperty(scope, "__argv", a);
+    }
+    ScriptableObject.putProperty(scope, "__cwd", new File(".").getAbsolutePath());
+    ScriptableObject.putProperty(scope, "global", scope);
+
     loadScript(cl, cx, scope, "./lib/process.js");
     loadScript(cl, cx, scope, "./lib/timers.js");
   }
@@ -92,7 +110,12 @@ public class NodeVerticle extends Verticle {
 
     ClassLoader cl = this.getClass().getClassLoader();
 
-    String scriptName = getMandatoryStringConfig("main");
+    scriptName = getMandatoryStringConfig("main");
+    String args = config.getString("args");
+    if(args != null){
+       argv = args.split(" ");
+    }
+
 
     if(! (scriptName.startsWith("./") || scriptName.startsWith("/") || scriptName.startsWith("../")) ){
       scriptName = "./" + scriptName;
