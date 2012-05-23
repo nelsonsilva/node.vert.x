@@ -1,2 +1,2 @@
 #!/bin/sh
-vertx run
+vertx run node.vert.x -conf vertx.json

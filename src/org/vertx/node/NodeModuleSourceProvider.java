@@ -1,10 +1,7 @@
 package org.vertx.node;
 
-import org.mozilla.javascript.Scriptable;
 import org.mozilla.javascript.commonjs.module.ModuleScope;
 import org.mozilla.javascript.commonjs.module.provider.ModuleSource;
-import org.mozilla.javascript.commonjs.module.provider.ModuleSourceProvider;
-import org.mozilla.javascript.commonjs.module.provider.ModuleSourceProviderBase;
 import org.mozilla.javascript.commonjs.module.provider.UrlModuleSourceProvider;
 import org.vertx.java.core.json.DecodeException;
 import org.vertx.java.core.json.JsonObject;
@@ -186,16 +183,6 @@ public class NodeModuleSourceProvider extends UrlModuleSourceProvider {
   }
 
   @Override
-  public ModuleSource loadSource(URI uri, Object validator) throws IOException, URISyntaxException {
-    return super.loadSource(uri, validator);    //To change body of overridden methods use File | Settings | File Templates.
-  }
-
-  @Override
-  public ModuleSource loadSource(String moduleId, Scriptable paths, Object validator) throws IOException, URISyntaxException {
-    return super.loadSource(moduleId, paths, validator);    //To change body of overridden methods use File | Settings | File Templates.
-  }
-
-  @Override
   protected ModuleSource loadFromUri(URI uri, URI base, Object validator)
           throws IOException, URISyntaxException
   {
@@ -203,9 +190,6 @@ public class NodeModuleSourceProvider extends UrlModuleSourceProvider {
     File file = new File(uri);
     String moduleId = file.getName();
 
-    if(moduleId.equals("sockjs")){
-      int i = 1;
-    }
     if(base == null)
       base = file.getParentFile().toURI().resolve("");
 

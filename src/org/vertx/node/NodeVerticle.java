@@ -18,17 +18,14 @@ package org.vertx.node;
 
 import org.mozilla.javascript.*;
 import org.mozilla.javascript.commonjs.module.Require;
-import org.mozilla.javascript.commonjs.module.RequireBuilder;
-import org.mozilla.javascript.commonjs.module.provider.SoftCachingModuleScriptProvider;
 import org.vertx.java.core.json.JsonObject;
 import org.vertx.java.core.logging.Logger;
-import org.vertx.java.core.logging.impl.LoggerFactory;
 import org.vertx.java.deploy.Verticle;
 
 import java.io.*;
 
 /**
- * @author <a href="http://tfox.org">Tim Fox</a>
+ * @author <a href="http://about.me/nelson.silva">Nelson Silva</a>
  */
 public class NodeVerticle extends Verticle {
 
